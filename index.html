@@ -121,7 +121,10 @@ var audio = document.createElement("audio");
 audio.src = "sounds/boxing_bell.mp3";
 audio.play();
 document.getElementById("buttonAppear").innerHTML = "<button id='reset' class='button' >RESET</button>";
-
+var audio1 = document.createElement("audio");
+audio1.src = "sounds/boxing_bell1.mp3";
+var audio2 = document.createElement("audio");
+audio2.src = "sounds/boxing_bell2.mp3";
 
 // Set the date we're counting down to
 var countDownDate = (new Date().getTime() + 300000);
@@ -160,8 +163,6 @@ var x = setInterval(function() {
         //document.getElementById("demo").innerHTML = "Expired";
         document.getElementById("demo").style.display = "none";
         document.getElementById("round").style.display = "none";
-        var audio1 = document.createElement("audio");
-        audio1.src = "sounds/boxing_bell1.mp3";
         audio1.play();
 
 
@@ -829,8 +830,6 @@ if (distance18 < 0) {
     document.getElementById("demo18").innerHTML = "Finished";
     //document.getElementById("demo18").style.display = "none";
     //document.getElementById("round18").style.display = "none";
-    var audio2 = document.createElement("audio");
-    audio2.src = "sounds/boxing_bell2.mp3";
     audio2.play();
     
 
