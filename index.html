@@ -1,0 +1,898 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jitz Timer</title>
+<link href='https://fonts.googleapis.com/css?family=Stardos Stencil' rel='stylesheet' type='text/css'>
+
+<style> 
+body {background-color: black;
+    line-height: 70%;}
+h1 {
+    text-align: center;
+    font-size: 50px;
+    color: white;
+    font-family:'Stardos Stencil';
+}
+.button { 
+    margin:auto;
+    display:block;
+    background-color: blue;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    font-family:'Stardos Stencil';
+  }
+#demo, #demo2, #demo4, #demo6, #demo8, #demo10, #demo12, #demo14, #demo16, #demo18  {
+  text-align: center;
+  font-size: 120px;
+  margin-top:50px;
+  background-color: black;
+  color: green;
+  font-family:'Stardos Stencil';
+}
+#demo1, #demo3, #demo5, #demo7, #demo9, #demo11, #demo13, #demo15, #demo17 {
+  text-align: center;
+  font-size: 120px;
+  margin-top:50px;
+  background-color: black;
+  color: red;
+  font-family:'Stardos Stencil';
+}
+#space {font-size: 54.5px;}
+#round, #rest1, #round2, #rest3, #round4, #rest5, #round6, #rest7, #round8, #rest9, #round10, #rest11, #round12, #rest13, #round14, #rest15, #round16, #rest17, #round18 {
+    text-align: center;
+    color: yellow;
+    font-size: 50px;
+    font-family:'Stardos Stencil';
+    }
+
+#disappear {
+  text-align: center;
+  font-size: 120px;
+  margin-top:50px;
+  background-color: black;
+  color: red;
+  font-family:'Stardos Stencil';
+}
+</style>
+</head>
+<!--body onload="boxingTimer()" -->
+<body>
+
+<h1>Jitz Timer<br><br></h1>
+
+<!--button class="button" onclick="this.style.display='none';divDisappear(); boxingTimer()">START INTERVAL TIMER</button -->
+<button class="button" onclick="this.style.visibility='hidden';divDisappear(); boxingTimer()">START INTERVAL TIMER</button>
+<br>
+<br>
+<br>
+<div id="disappear">5:00</div>
+<p id="demo"></p>
+<p id="round"></p>
+<p id="demo1"></p>
+<p id="rest1"></p>
+<p id="demo2"></p>
+<p id="round2"></p>
+<p id="demo3"></p>
+<p id="rest3"></p>
+<p id="demo4"></p>
+<p id="round4"></p>
+<p id="demo5"></p>
+<p id="rest5"></p>
+<p id="demo6"></p>
+<p id="round6"></p>
+<p id="demo7"></p>
+<p id="rest7"></p>
+<p id="demo8"></p>
+<p id="round8"></p>
+<p id="demo9"></p>
+<p id="rest9"></p>
+<p id="demo10"></p>
+<p id="round10"></p>
+<p id="demo11"></p>
+<p id="rest11"></p>
+<p id="demo12"></p>
+<p id="round12"></p>
+<p id="demo13"></p>
+<p id="rest13"></p>
+<p id="demo14"></p>
+<p id="round14"></p>
+<p id="demo15"></p>
+<p id="rest15"></p>
+<p id="demo16"></p>
+<p id="round16"></p>
+<p id="demo17"></p>
+<p id="rest17"></p>
+<p id="demo18"></p>
+<p id="round18"></p>
+<p id="space"></p>
+<!--button id="reset" class="button" onclick="this.style.display='none'; restart()">RESET</button-->
+<span id="buttonAppear" onclick="this.style.display='none'; restart()"></span>
+<script>
+
+
+function boxingTimer() {
+var audio = document.createElement("audio");
+audio.src = "sounds/boxing_bell.mp3";
+audio.play();
+document.getElementById("buttonAppear").innerHTML = "<button id='reset' class='button' >RESET</button>";
+
+
+// Set the date we're counting down to
+var countDownDate = (new Date().getTime() + 300000);
+
+// Update the count down every 1 second
+var x = setInterval(function() {
+
+    // Get todays date and time
+    var now = new Date().getTime();
+
+    
+    // Find the distance between now an the count down date
+    var distance = countDownDate - now;
+
+   
+    
+    // Time calculations for days, hours, minutes and seconds
+    //var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    //var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    if (seconds < 10)
+    var seconds = "0" + Math.floor((distance % (1000 * 60)) / 1000);
+
+   
+    // Output the result in an element with id="demo"
+    //document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+    //+ minutes + "m " + seconds + "s ";
+    document.getElementById("demo").innerHTML = minutes + ":" + seconds;
+    document.getElementById("round").innerHTML = "Round 1";
+
+    
+    // If the count down is over, write some text 
+    if (distance < 0) {
+        clearInterval(x);
+        //document.getElementById("demo").innerHTML = "Expired";
+        document.getElementById("demo").style.display = "none";
+        document.getElementById("round").style.display = "none";
+        var audio1 = document.createElement("audio");
+        audio1.src = "sounds/boxing_bell1.mp3";
+        audio1.play();
+
+
+// Set the date we're counting down to
+var countDownDate1 = (new Date().getTime() + 60000);
+
+    // Update the count down every 1 second
+var y = setInterval(function() {
+
+
+// Get todays date and time
+var now1 = new Date().getTime();
+
+// Find the distance between now an the count down date
+var distance1 = countDownDate1 - now1;
+
+
+// Time calculations for minutes and seconds
+var minutes1 = Math.floor((distance1 % (1000 * 60 * 60)) / (1000 * 60));
+var seconds1 = Math.floor((distance1 % (1000 * 60)) / 1000);
+if (seconds1 < 10)
+    var seconds1 = "0" + Math.floor((distance1 % (1000 * 60)) / 1000);
+
+
+// Output the result in an element with id="demo"
+//document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+//+ minutes + "m " + seconds + "s ";
+document.getElementById("demo1").innerHTML = minutes1 + ":" + seconds1;
+document.getElementById("rest1").innerHTML = "Rest";
+
+// If the count down is over, write some text 
+
+if (distance1 < 0) {
+    clearInterval(y);
+    //document.getElementById("demo1").innerHTML = "EXPIRED";
+    document.getElementById("demo1").style.display = "none";
+    document.getElementById("rest1").style.display = "none";
+    audio.play();
+    
+    
+
+// Set the date we're counting down to
+var countDownDate2 = (new Date().getTime() + 300000);
+
+// Update the count down every 1 second
+var x2 = setInterval(function() {
+
+    // Get todays date and time
+    var now2 = new Date().getTime();
+
+    
+    // Find the distance between now an the count down date
+    var distance2 = countDownDate2 - now2;
+
+   
+    
+    // Time calculations for minutes and seconds
+    var minutes2 = Math.floor((distance2 % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds2 = Math.floor((distance2 % (1000 * 60)) / 1000);
+    if (seconds2 < 10)
+    var seconds2 = "0" + Math.floor((distance2 % (1000 * 60)) / 1000);
+
+   
+    // Output the result in an element with id="demo"
+    //document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+    //+ minutes + "m " + seconds + "s ";
+    document.getElementById("demo2").innerHTML = minutes2 + ":" + seconds2;
+    document.getElementById("round2").innerHTML = "Round 2";
+    
+    // If the count down is over, write some text 
+    if (distance2 < 0) {
+        clearInterval(x2);
+        //document.getElementById("demo").innerHTML = "Expired";
+        document.getElementById("demo2").style.display = "none";
+        document.getElementById("round2").style.display = "none";
+        audio1.play();
+
+
+// Set the date we're counting down to
+var countDownDate3 = (new Date().getTime() + 60000);
+
+// Update the count down every 1 second
+var y3 = setInterval(function() {
+
+
+// Get todays date and time
+var now3 = new Date().getTime();
+
+// Find the distance between now an the count down date
+var distance3 = countDownDate3 - now3;
+
+
+// Time calculations for minutes and seconds
+var minutes3 = Math.floor((distance3 % (1000 * 60 * 60)) / (1000 * 60));
+var seconds3 = Math.floor((distance3 % (1000 * 60)) / 1000);
+if (seconds3 < 10)
+    var seconds3 = "0" + Math.floor((distance3 % (1000 * 60)) / 1000);
+
+
+// Output the result in an element with id="demo"
+//document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+//+ minutes + "m " + seconds + "s ";
+document.getElementById("demo3").innerHTML = minutes3 + ":" + seconds3;
+document.getElementById("rest3").innerHTML = "Rest";
+
+// If the count down is over, write some text 
+
+if (distance3 < 0) {
+    clearInterval(y3);
+    document.getElementById("demo3").style.display = "none";
+    document.getElementById("rest3").style.display = "none";
+    audio.play();
+    
+
+// Set the date we're counting down to
+var countDownDate4 = (new Date().getTime() + 300000);
+
+// Update the count down every 1 second
+var x4 = setInterval(function() {
+
+    // Get todays date and time
+    var now4 = new Date().getTime();
+
+    
+    // Find the distance between now an the count down date
+    var distance4 = countDownDate4 - now4;
+
+   
+    
+    // Time calculations for minutes and seconds
+    var minutes4 = Math.floor((distance4 % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds4 = Math.floor((distance4 % (1000 * 60)) / 1000);
+    if (seconds4 < 10)
+    var seconds4 = "0" + Math.floor((distance4 % (1000 * 60)) / 1000);
+
+   
+    // Output the result in an element with id="demo"
+    //document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+    //+ minutes + "m " + seconds + "s ";
+    document.getElementById("demo4").innerHTML = minutes4 + ":" + seconds4;
+    document.getElementById("round4").innerHTML = "Round 3";
+    
+    
+    // If the count down is over, write some text 
+    if (distance4 < 0) {
+        clearInterval(x4);
+        //document.getElementById("demo").innerHTML = "Expired";
+        document.getElementById("demo4").style.display = "none";
+        document.getElementById("round4").style.display = "none";
+        audio1.play();
+
+
+// Set the date we're counting down to
+var countDownDate5 = (new Date().getTime() + 60000);
+
+// Update the count down every 1 second
+var y5 = setInterval(function() {
+
+
+// Get todays date and time
+var now5 = new Date().getTime();
+
+// Find the distance between now an the count down date
+var distance5 = countDownDate5 - now5;
+
+
+// Time calculations for minutes and seconds
+var minutes5 = Math.floor((distance5 % (1000 * 60 * 60)) / (1000 * 60));
+var seconds5 = Math.floor((distance5 % (1000 * 60)) / 1000);
+if (seconds5 < 10)
+    var seconds5 = "0" + Math.floor((distance5 % (1000 * 60)) / 1000);
+
+
+// Output the result in an element with id="demo"
+//document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+//+ minutes + "m " + seconds + "s ";
+document.getElementById("demo5").innerHTML = minutes5 + ":" + seconds5;
+document.getElementById("rest5").innerHTML = "Rest";
+
+
+// If the count down is over, write some text 
+
+if (distance5 < 0) {
+    clearInterval(y5);
+    document.getElementById("demo5").style.display = "none";
+    document.getElementById("rest5").style.display = "none";
+    audio.play();
+    
+// Set the date we're counting down to
+var countDownDate6 = (new Date().getTime() + 300000);
+
+// Update the count down every 1 second
+var x6 = setInterval(function() {
+
+    // Get todays date and time
+    var now6 = new Date().getTime();
+
+    
+    // Find the distance between now an the count down date
+    var distance6 = countDownDate6 - now6;
+
+   
+    
+    // Time calculations for minutes and seconds
+    var minutes6 = Math.floor((distance6 % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds6 = Math.floor((distance6 % (1000 * 60)) / 1000);
+    if (seconds6 < 10)
+    var seconds6 = "0" + Math.floor((distance6 % (1000 * 60)) / 1000);
+
+   
+    // Output the result in an element with id="demo"
+    //document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+    //+ minutes + "m " + seconds + "s ";
+    document.getElementById("demo6").innerHTML = minutes6 + ":" + seconds6;
+    document.getElementById("round6").innerHTML = "Round 4";
+    
+    
+    // If the count down is over, write some text 
+    if (distance6 < 0) {
+        clearInterval(x6);
+        //document.getElementById("demo").innerHTML = "Expired";
+        document.getElementById("demo6").style.display = "none";
+        document.getElementById("round6").style.display = "none";
+        audio1.play();
+
+
+// Set the date we're counting down to
+var countDownDate7 = (new Date().getTime() + 60000);
+
+// Update the count down every 1 second
+var y7 = setInterval(function() {
+
+
+// Get todays date and time
+var now7 = new Date().getTime();
+
+// Find the distance between now an the count down date
+var distance7 = countDownDate7 - now7;
+
+
+// Time calculations for minutes and seconds
+var minutes7 = Math.floor((distance7 % (1000 * 60 * 60)) / (1000 * 60));
+var seconds7 = Math.floor((distance7 % (1000 * 60)) / 1000);
+if (seconds7 < 10)
+    var seconds7 = "0" + Math.floor((distance7 % (1000 * 60)) / 1000);
+
+
+// Output the result in an element with id="demo"
+//document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+//+ minutes + "m " + seconds + "s ";
+document.getElementById("demo7").innerHTML = minutes7 + ":" + seconds7;
+document.getElementById("rest7").innerHTML = "Rest";
+
+
+// If the count down is over, write some text 
+
+if (distance7 < 0) {
+    clearInterval(y7);
+    document.getElementById("demo7").style.display = "none";
+    document.getElementById("rest7").style.display = "none";
+    audio.play();
+    
+// Set the date we're counting down to
+var countDownDate8 = (new Date().getTime() + 300000);
+
+// Update the count down every 1 second
+var x8 = setInterval(function() {
+
+    // Get todays date and time
+    var now8 = new Date().getTime();
+
+    
+    // Find the distance between now an the count down date
+    var distance8 = countDownDate8 - now8;
+
+   
+    
+    // Time calculations for minutes and seconds
+    var minutes8 = Math.floor((distance8 % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds8 = Math.floor((distance8 % (1000 * 60)) / 1000);
+    if (seconds8 < 10)
+    var seconds8 = "0" + Math.floor((distance8 % (1000 * 60)) / 1000);
+
+   
+    // Output the result in an element with id="demo"
+    //document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+    //+ minutes + "m " + seconds + "s ";
+    document.getElementById("demo8").innerHTML = minutes8 + ":" + seconds8;
+    document.getElementById("round8").innerHTML = "Round 5";
+    
+    
+    // If the count down is over, write some text 
+    if (distance8 < 0) {
+        clearInterval(x8);
+        //document.getElementById("demo").innerHTML = "Expired";
+        document.getElementById("demo8").style.display = "none";
+        document.getElementById("round8").style.display = "none";
+        audio1.play();
+
+
+// Set the date we're counting down to
+var countDownDate9 = (new Date().getTime() + 60000);
+
+// Update the count down every 1 second
+var y9 = setInterval(function() {
+
+
+// Get todays date and time
+var now9 = new Date().getTime();
+
+// Find the distance between now an the count down date
+var distance9 = countDownDate9 - now9;
+
+
+// Time calculations for minutes and seconds
+var minutes9 = Math.floor((distance9 % (1000 * 60 * 60)) / (1000 * 60));
+var seconds9 = Math.floor((distance9 % (1000 * 60)) / 1000);
+if (seconds9 < 10)
+    var seconds9 = "0" + Math.floor((distance9 % (1000 * 60)) / 1000);
+
+
+// Output the result in an element with id="demo"
+//document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+//+ minutes + "m " + seconds + "s ";
+document.getElementById("demo9").innerHTML = minutes9 + ":" + seconds9;
+document.getElementById("rest9").innerHTML = "Rest";
+
+
+// If the count down is over, write some text 
+
+if (distance9 < 0) {
+    clearInterval(y9);
+    document.getElementById("demo9").style.display = "none";
+    document.getElementById("rest9").style.display = "none";
+    audio.play();
+    
+// Set the date we're counting down to
+var countDownDate10 = (new Date().getTime() + 300000);
+
+// Update the count down every 1 second
+var x10 = setInterval(function() {
+
+    // Get todays date and time
+    var now10 = new Date().getTime();
+
+    
+    // Find the distance between now an the count down date
+    var distance10 = countDownDate10 - now10;
+
+   
+    
+    // Time calculations for minutes and seconds
+    var minutes10 = Math.floor((distance10 % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds10 = Math.floor((distance10 % (1000 * 60)) / 1000);
+    if (seconds10 < 10)
+    var seconds10 = "0" + Math.floor((distance10 % (1000 * 60)) / 1000);
+
+   
+    // Output the result in an element with id="demo"
+    //document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+    //+ minutes + "m " + seconds + "s ";
+    document.getElementById("demo10").innerHTML = minutes10 + ":" + seconds10;
+    document.getElementById("round10").innerHTML = "Round 6";
+    
+    
+    // If the count down is over, write some text 
+    if (distance10 < 0) {
+        clearInterval(x10);
+        //document.getElementById("demo").innerHTML = "Expired";
+        document.getElementById("demo10").style.display = "none";
+        document.getElementById("round10").style.display = "none";
+        audio1.play();
+
+
+// Set the date we're counting down to
+var countDownDate11 = (new Date().getTime() + 60000);
+
+// Update the count down every 1 second
+var y11 = setInterval(function() {
+
+
+// Get todays date and time
+var now11 = new Date().getTime();
+
+// Find the distance between now an the count down date
+var distance11 = countDownDate11 - now11;
+
+
+// Time calculations for minutes and seconds
+var minutes11 = Math.floor((distance11 % (1000 * 60 * 60)) / (1000 * 60));
+var seconds11 = Math.floor((distance11 % (1000 * 60)) / 1000);
+if (seconds11 < 10)
+    var seconds11 = "0" + Math.floor((distance11 % (1000 * 60)) / 1000);
+
+
+// Output the result in an element with id="demo"
+//document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+//+ minutes + "m " + seconds + "s ";
+document.getElementById("demo11").innerHTML = minutes11 + ":" + seconds11;
+document.getElementById("rest11").innerHTML = "Rest";
+
+
+// If the count down is over, write some text 
+
+if (distance11 < 0) {
+    clearInterval(y11);
+    document.getElementById("demo11").style.display = "none";
+    document.getElementById("rest11").style.display = "none";
+    audio.play();
+    
+// Set the date we're counting down to
+var countDownDate12 = (new Date().getTime() + 300000);
+
+// Update the count down every 1 second
+var x12 = setInterval(function() {
+
+    // Get todays date and time
+    var now12 = new Date().getTime();
+
+    
+    // Find the distance between now an the count down date
+    var distance12 = countDownDate12 - now12;
+
+   
+    
+    // Time calculations for minutes and seconds
+    var minutes12 = Math.floor((distance12 % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds12 = Math.floor((distance12 % (1000 * 60)) / 1000);
+    if (seconds12 < 10)
+    var seconds12 = "0" + Math.floor((distance12 % (1000 * 60)) / 1000);
+
+   
+    // Output the result in an element with id="demo"
+    //document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+    //+ minutes + "m " + seconds + "s ";
+    document.getElementById("demo12").innerHTML = minutes12 + ":" + seconds12;
+    document.getElementById("round12").innerHTML = "Round 7";
+    
+    
+    // If the count down is over, write some text 
+    if (distance12 < 0) {
+        clearInterval(x12);
+        //document.getElementById("demo").innerHTML = "Expired";
+        document.getElementById("demo12").style.display = "none";
+        document.getElementById("round12").style.display = "none";
+        audio1.play();
+
+
+// Set the date we're counting down to
+var countDownDate13 = (new Date().getTime() + 60000);
+
+// Update the count down every 1 second
+var y13 = setInterval(function() {
+
+
+// Get todays date and time
+var now13 = new Date().getTime();
+
+// Find the distance between now an the count down date
+var distance13 = countDownDate13 - now13;
+
+
+// Time calculations for minutes and seconds
+var minutes13 = Math.floor((distance13 % (1000 * 60 * 60)) / (1000 * 60));
+var seconds13 = Math.floor((distance13 % (1000 * 60)) / 1000);
+if (seconds13 < 10)
+    var seconds13 = "0" + Math.floor((distance13 % (1000 * 60)) / 1000);
+
+
+// Output the result in an element with id="demo"
+//document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+//+ minutes + "m " + seconds + "s ";
+document.getElementById("demo13").innerHTML = minutes13 + ":" + seconds13;
+document.getElementById("rest13").innerHTML = "Rest";
+
+
+// If the count down is over, write some text 
+
+if (distance13 < 0) {
+    clearInterval(y13);
+    document.getElementById("demo13").style.display = "none";
+    document.getElementById("rest13").style.display = "none";
+    audio.play();
+    
+// Set the date we're counting down to
+var countDownDate14 = (new Date().getTime() + 300000);
+
+// Update the count down every 1 second
+var x14 = setInterval(function() {
+
+    // Get todays date and time
+    var now14 = new Date().getTime();
+
+    
+    // Find the distance between now an the count down date
+    var distance14 = countDownDate14 - now14;
+
+   
+    
+    // Time calculations for minutes and seconds
+    var minutes14 = Math.floor((distance14 % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds14 = Math.floor((distance14 % (1000 * 60)) / 1000);
+    if (seconds14 < 10)
+    var seconds14 = "0" + Math.floor((distance14 % (1000 * 60)) / 1000);
+
+   
+    // Output the result in an element with id="demo"
+    //document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+    //+ minutes + "m " + seconds + "s ";
+    document.getElementById("demo14").innerHTML = minutes14 + ":" + seconds14;
+    document.getElementById("round14").innerHTML = "Round 8";
+    
+    
+    // If the count down is over, write some text 
+    if (distance14 < 0) {
+        clearInterval(x14);
+        //document.getElementById("demo").innerHTML = "Expired";
+        document.getElementById("demo14").style.display = "none";
+        document.getElementById("round14").style.display = "none";
+        audio1.play();
+
+
+// Set the date we're counting down to
+var countDownDate15 = (new Date().getTime() + 60000);
+
+// Update the count down every 1 second
+var y15 = setInterval(function() {
+
+
+// Get todays date and time
+var now15 = new Date().getTime();
+
+// Find the distance between now an the count down date
+var distance15 = countDownDate15 - now15;
+
+
+// Time calculations for minutes and seconds
+var minutes15 = Math.floor((distance15 % (1000 * 60 * 60)) / (1000 * 60));
+var seconds15 = Math.floor((distance15 % (1000 * 60)) / 1000);
+if (seconds15 < 10)
+    var seconds15 = "0" + Math.floor((distance15 % (1000 * 60)) / 1000);
+
+
+// Output the result in an element with id="demo"
+//document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+//+ minutes + "m " + seconds + "s ";
+document.getElementById("demo15").innerHTML = minutes15 + ":" + seconds15;
+document.getElementById("rest15").innerHTML = "Rest";
+
+
+// If the count down is over, write some text 
+
+if (distance15 < 0) {
+    clearInterval(y15);
+    document.getElementById("demo15").style.display = "none";
+    document.getElementById("rest15").style.display = "none";
+    audio.play();
+    
+// Set the date we're counting down to
+var countDownDate16 = (new Date().getTime() + 300000);
+
+// Update the count down every 1 second
+var x16 = setInterval(function() {
+
+    // Get todays date and time
+    var now16 = new Date().getTime();
+
+    
+    // Find the distance between now an the count down date
+    var distance16 = countDownDate16 - now16;
+
+   
+    
+    // Time calculations for minutes and seconds
+    var minutes16 = Math.floor((distance16 % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds16 = Math.floor((distance16 % (1000 * 60)) / 1000);
+    if (seconds16 < 10)
+    var seconds16 = "0" + Math.floor((distance16 % (1000 * 60)) / 1000);
+
+   
+    // Output the result in an element with id="demo"
+    //document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+    //+ minutes + "m " + seconds + "s ";
+    document.getElementById("demo16").innerHTML = minutes16 + ":" + seconds16;
+    document.getElementById("round16").innerHTML = "Round 9";
+    
+    
+    // If the count down is over, write some text 
+    if (distance16 < 0) {
+        clearInterval(x16);
+        //document.getElementById("demo").innerHTML = "Expired";
+        document.getElementById("demo16").style.display = "none";
+        document.getElementById("round16").style.display = "none";
+        audio1.play();
+
+
+// Set the date we're counting down to
+var countDownDate17 = (new Date().getTime() + 60000);
+
+// Update the count down every 1 second
+var y17 = setInterval(function() {
+
+
+// Get todays date and time
+var now17 = new Date().getTime();
+
+// Find the distance between now an the count down date
+var distance17 = countDownDate17 - now17;
+
+
+// Time calculations for minutes and seconds
+var minutes17 = Math.floor((distance17 % (1000 * 60 * 60)) / (1000 * 60));
+var seconds17 = Math.floor((distance17 % (1000 * 60)) / 1000);
+if (seconds17 < 10)
+    var seconds17 = "0" + Math.floor((distance17 % (1000 * 60)) / 1000);
+
+
+// Output the result in an element with id="demo"
+//document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+//+ minutes + "m " + seconds + "s ";
+document.getElementById("demo17").innerHTML = minutes17 + ":" + seconds17;
+document.getElementById("rest17").innerHTML = "Rest";
+
+
+// If the count down is over, write some text 
+
+if (distance17 < 0) {
+    clearInterval(y17);
+    document.getElementById("demo17").style.display = "none";
+    document.getElementById("rest17").style.display = "none";
+    audio.play();
+    
+// Set the date we're counting down to
+var countDownDate18 = (new Date().getTime() + 300000);
+
+// Update the count down every 1 second
+var x18 = setInterval(function() {
+
+
+// Get todays date and time
+var now18 = new Date().getTime();
+
+// Find the distance between now an the count down date
+var distance18 = countDownDate18 - now18;
+
+
+// Time calculations for minutes and seconds
+var minutes18 = Math.floor((distance18 % (1000 * 60 * 60)) / (1000 * 60));
+var seconds18 = Math.floor((distance18 % (1000 * 60)) / 1000);
+if (seconds18 < 10)
+    var seconds18 = "0" + Math.floor((distance18 % (1000 * 60)) / 1000);
+
+
+// Output the result in an element with id="demo"
+//document.getElementById("demo").innerHTML = days + "d " + hours + "h "
+//+ minutes + "m " + seconds + "s ";
+document.getElementById("demo18").innerHTML = minutes18 + ":" + seconds18;
+document.getElementById("round18").innerHTML = "Round 10";
+document.getElementById("space").innerHTML = ".";
+
+// If the count down is over, write some text 
+
+if (distance18 < 0) {
+    clearInterval(x18);
+    document.getElementById("demo18").innerHTML = "Finished";
+    //document.getElementById("demo18").style.display = "none";
+    //document.getElementById("round18").style.display = "none";
+    var audio2 = document.createElement("audio");
+    audio2.src = "sounds/boxing_bell2.mp3";
+    audio2.play();
+    
+
+    
+}
+}, 0);
+    
+}
+}, 0);
+}
+    }, 0);  
+    
+}
+}, 0);
+}
+    }, 0);  
+    
+}
+}, 0);
+}
+    }, 0);  
+    
+}
+}, 0);
+}
+    }, 0);    
+    
+}
+}, 0);
+}
+    }, 0);    
+    
+}
+}, 0);
+}
+    }, 0);    
+}
+}, 0);
+}
+    }, 0);    
+}
+}, 0);
+}
+    }, 0);
+}
+}, 0);
+}
+    }, 0);
+}
+
+function restart() {location.reload();}
+
+function divDisappear() {
+    var c = document.getElementById("disappear");
+    if (c.style.display === "none") {
+        c.style.display = "block";
+    } else {
+        c.style.display = "none";
+    }
+}
+    
+</script>
+
+</body>
+</html>
