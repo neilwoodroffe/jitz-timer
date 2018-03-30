@@ -114,17 +114,17 @@ h1 {
 <!--button id="reset" class="button" onclick="this.style.display='none'; restart()">RESET</button-->
 <span id="buttonAppear" onclick="this.style.display='none'; restart()"></span>
 <script>
-
-
-function boxingTimer() {
 var audio = document.createElement("audio");
 audio.src = "sounds/boxing_bell.mp3";
-audio.play();
-document.getElementById("buttonAppear").innerHTML = "<button id='reset' class='button' >RESET</button>";
 var audio1 = document.createElement("audio");
 audio1.src = "sounds/boxing_bell1.mp3";
 var audio2 = document.createElement("audio");
 audio2.src = "sounds/boxing_bell2.mp3";
+
+function boxingTimer() {
+audio.play();
+document.getElementById("buttonAppear").innerHTML = "<button id='reset' class='button' >RESET</button>";
+
 
 // Set the date we're counting down to
 var countDownDate = (new Date().getTime() + 300000);
