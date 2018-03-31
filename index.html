@@ -67,7 +67,7 @@ h1 {
 <h1>Jitz Timer<br><br></h1>
 
 <!--button class="button" onclick="this.style.display='none';divDisappear(); boxingTimer()">START INTERVAL TIMER</button -->
-<button class="button" onclick="this.style.visibility='hidden';divDisappear(); boxingTimer()">START INTERVAL TIMER</button>
+<button class="button" onclick="this.style.visibility='hidden';divDisappear(); boxingTimer(); audio.play(); ">START INTERVAL TIMER</button>
 <br>
 <br>
 <br>
@@ -118,11 +118,11 @@ var audio = document.createElement("audio");
 audio.src = "sounds/boxing_bell.mp3";
 //var audio1 = document.createElement("audio");
 //audio1.src = "sounds/boxing_bell1.mp3";
-var audio2 = document.createElement("audio");
-audio2.src = "sounds/boxing_bell2.mp3";
+//var audio2 = document.createElement("audio");
+//audio2.src = "sounds/boxing_bell2.mp3";
 
 function boxingTimer() {
-audio.play();
+//audio.play();
 document.getElementById("buttonAppear").innerHTML = "<button id='reset' class='button' >RESET</button>";
 
 
@@ -827,12 +827,14 @@ document.getElementById("space").innerHTML = ".";
 
 if (distance18 < 0) {
     clearInterval(x18);
-    document.getElementById("demo18").innerHTML = "Finished";
+    document.getElementById("demo18").innerHTML = "<span style='font-size:80px'>Finished</span>";
     //document.getElementById("demo18").style.display = "none";
     //document.getElementById("round18").style.display = "none";
-    audio2.play();
-    
-
+    audio.addEventListener('ended', function () {
+    // Wait 500 milliseconds before next loop
+    setTimeout(function () { audio.play(); }, 500);
+    }, false);
+    audio.play(); 
     
 }
 }, 0);
