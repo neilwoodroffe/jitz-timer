@@ -9,20 +9,21 @@
 
 <style> 
 body {background-color: black;
-    line-height: 70%;}
+    line-height: 60%;}
 h1 {
     text-align: center;
-    font-size: 50px;
+    font-size: 45px;
     color: white;
     font-family:'Stardos Stencil';
 }
 .button { 
-    margin:auto;
-    display:block;
+    /*margin: auto;*/
+    display:inline;
     background-color: blue;
     border: none;
     color: white;
-    padding: 15px 32px;
+    /*padding: 15px 32px;*/
+    padding: 7.5px 16px;
     text-align: center;
     text-decoration: none;
     font-size: 16px;
@@ -30,7 +31,7 @@ h1 {
   }
 #demo, #demo2, #demo4, #demo6, #demo8, #demo10, #demo12, #demo14, #demo16, #demo18  {
   text-align: center;
-  font-size: 120px;
+  font-size: 110px;
   margin-top:50px;
   background-color: black;
   color: green;
@@ -38,23 +39,24 @@ h1 {
 }
 #demo1, #demo3, #demo5, #demo7, #demo9, #demo11, #demo13, #demo15, #demo17 {
   text-align: center;
-  font-size: 120px;
+  font-size: 110px;
   margin-top:50px;
   background-color: black;
   color: red;
   font-family:'Stardos Stencil';
 }
-#space {font-size: 54.5px;}
+/*#space {font-size: 54.5px;}*/
 #round, #rest1, #round2, #rest3, #round4, #rest5, #round6, #rest7, #round8, #rest9, #round10, #rest11, #round12, #rest13, #round14, #rest15, #round16, #rest17, #round18 {
     text-align: center;
     color: yellow;
-    font-size: 50px;
+    margin-top:-20px;
+    font-size: 40px;
     font-family:'Stardos Stencil';
     }
 
 #disappear {
   text-align: center;
-  font-size: 120px;
+  font-size: 110px;
   margin-top:50px;
   background-color: black;
   color: red;
@@ -67,8 +69,9 @@ h1 {
 
 <h1>Jitz Timer<br><br></h1>
 
-<!--button class="button" onclick="this.style.display='none';divDisappear(); boxingTimer()">START INTERVAL TIMER</button -->
-<button class="button" onclick="this.style.visibility='hidden';divDisappear(); boxingTimer()">START INTERVAL TIMER</button>
+<p style="text-align:center;"> <button class="button" onclick="this.style.display='none';divDisappear(); boxingTimer()">START</button>&nbsp;&nbsp;&nbsp;<button id="reset" class="button" onclick="this.style.display='none'; restart()">RESET</button></p>
+<!--button class="button" onclick="this.style.visibility='hidden';divDisappear(); boxingTimer()">START INTERVAL TIMER</button-->
+<!--span id="buttonAppear" onclick="this.style.display='none'; restart()"></span-->
 <br>
 <br>
 <br>
@@ -111,22 +114,23 @@ h1 {
 <p id="rest17"></p>
 <p id="demo18"></p>
 <p id="round18"></p>
-<p id="space"></p>
+<!--p id="space"></p-->
 <!--button id="reset" class="button" onclick="this.style.display='none'; restart()">RESET</button-->
-<span id="buttonAppear" onclick="this.style.display='none'; restart()"></span>
+<!--span id="buttonAppear" onclick="this.style.display='none'; restart()"></span-->
 <script>
 
 var noSleep = new NoSleep();
+var audio = document.createElement("audio");
+audio.src = "sounds/boxing_bell.mp3";
+audio.load();
 //var audio1 = document.createElement("audio");
 //audio1.src = "sounds/boxing_bell1.mp3";
 //var audio2 = document.createElement("audio");
 //audio2.src = "sounds/boxing_bell2.mp3";
 
 function boxingTimer() {
-var audio = document.createElement("audio");
-audio.src = "sounds/boxing_bell.mp3";
 audio.play();
-document.getElementById("buttonAppear").innerHTML = "<button id='reset' class='button' >RESET</button>";
+//document.getElementById("buttonAppear").innerHTML = "<button id='reset' class='button' >RESET</button>";
 
 
 // Set the date we're counting down to
@@ -824,7 +828,7 @@ if (seconds18 < 10)
 //+ minutes + "m " + seconds + "s ";
 document.getElementById("demo18").innerHTML = minutes18 + ":" + seconds18;
 document.getElementById("round18").innerHTML = "Round 10";
-document.getElementById("space").innerHTML = ".";
+//document.getElementById("space").innerHTML = ".";
 
 // If the count down is over, write some text 
 
@@ -839,8 +843,37 @@ if (distance18 < 0) {
     // Wait 500 milliseconds before next loop
     setTimeout(function () { audio.play(); }, 500);
     }, false);
-    audio.play(); 
-    
+    audio.play();
+
+// Set the date we're counting down to
+var countDownDate19 = (new Date().getTime() + 10000);
+
+// Update the count down every 1 second
+var y19 = setInterval(function() {
+
+
+// Get todays date and time
+var now19 = new Date().getTime();
+
+// Find the distance between now an the count down date
+var distance19 = countDownDate19 - now19;
+
+
+// Time calculations for minutes and seconds
+var minutes19 = Math.floor((distance19 % (1000 * 60 * 60)) / (1000 * 60));
+var seconds19 = Math.floor((distance19 % (1000 * 60)) / 1000);
+if (seconds19 < 10)
+    var seconds19 = "0" + Math.floor((distance19 % (1000 * 60)) / 1000);
+
+
+// If the count down is over, pause the bell 
+
+if (distance19 < 0) {
+    clearInterval(y19);
+    audio.pause();
+}
+}, 0);
+
 }
 }, 0);
     
