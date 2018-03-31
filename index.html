@@ -17,13 +17,13 @@ h1 {
     font-family:'Stardos Stencil';
 }
 .button { 
-    /*margin: auto;*/
-    display:inline;
+    margin: auto;
+    display: block;
     background-color: blue;
     border: none;
     color: white;
-    /*padding: 15px 32px;*/
-    padding: 7.5px 16px;
+    padding: 15px 32px;
+    /*padding: 7.5px 16px;*/
     text-align: center;
     text-decoration: none;
     font-size: 16px;
@@ -69,9 +69,10 @@ h1 {
 
 <h1>Jitz Timer<br><br></h1>
 
-<p style="text-align:center;"> <button class="button" onclick="this.style.display='none';divDisappear(); boxingTimer()">START</button>&nbsp;&nbsp;&nbsp;<button id="reset" class="button" onclick="this.style.display='none'; restart()">RESET</button></p>
+<!--p style="text-align:center;"> <button class="button" onclick="this.style.display='none';divDisappear(); boxingTimer()">START</button>&nbsp;&nbsp;&nbsp;<button id="reset" class="button" onclick="this.style.display='none'; restart()">RESET</button></p-->
+<button class="button" onclick="this.style.display='none';divDisappear(); boxingTimer()">START</button>
 <!--button class="button" onclick="this.style.visibility='hidden';divDisappear(); boxingTimer()">START INTERVAL TIMER</button-->
-<!--span id="buttonAppear" onclick="this.style.display='none'; restart()"></span-->
+<span id="buttonAppear" onclick="this.style.display='none'; restart()"></span>
 <br>
 <br>
 <br>
@@ -119,7 +120,9 @@ h1 {
 <!--span id="buttonAppear" onclick="this.style.display='none'; restart()"></span-->
 <script>
 
+//https://github.com/richtr/NoSleep.js?utm_source=recordnotfound.com
 var noSleep = new NoSleep();
+//load sound
 var audio = document.createElement("audio");
 audio.src = "sounds/boxing_bell.mp3";
 audio.load();
@@ -130,7 +133,7 @@ audio.load();
 
 function boxingTimer() {
 audio.play();
-//document.getElementById("buttonAppear").innerHTML = "<button id='reset' class='button' >RESET</button>";
+document.getElementById("buttonAppear").innerHTML = "<button id='reset' class='button' >RESET</button>";
 
 
 // Set the date we're counting down to
@@ -841,12 +844,12 @@ if (distance18 < 0) {
     //https://blogs.msdn.microsoft.com/ie/2011/05/13/unlocking-the-power-of-html5-audio/
     audio.addEventListener('ended', function () {
     // Wait 500 milliseconds before next loop
-    setTimeout(function () { audio.play(); }, 500);
+    setTimeout(function () { audio.play(); }, 0);
     }, false);
     audio.play();
 
 // Set the date we're counting down to
-var countDownDate19 = (new Date().getTime() + 10000);
+var countDownDate19 = (new Date().getTime() + 5000);
 
 // Update the count down every 1 second
 var y19 = setInterval(function() {
@@ -930,7 +933,7 @@ function divDisappear() {
         c.style.display = "none";
     }
 }
-
+//https://github.com/richtr/NoSleep.js?utm_source=recordnotfound.com
 function enableNoSleep() {
   noSleep.enable();
   document.removeEventListener('click', enableNoSleep, false);
