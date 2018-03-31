@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Jitz Timer</title>
 <link href='https://fonts.googleapis.com/css?family=Stardos Stencil' rel='stylesheet' type='text/css'>
+<script src="NoSleep.js"></script> 
 
 <style> 
 body {background-color: black;
@@ -67,7 +68,7 @@ h1 {
 <h1>Jitz Timer<br><br></h1>
 
 <!--button class="button" onclick="this.style.display='none';divDisappear(); boxingTimer()">START INTERVAL TIMER</button -->
-<button class="button" onclick="this.style.visibility='hidden';divDisappear(); boxingTimer(); audio.play(); ">START INTERVAL TIMER</button>
+<button class="button" onclick="this.style.visibility='hidden';divDisappear(); boxingTimer()">START INTERVAL TIMER</button>
 <br>
 <br>
 <br>
@@ -114,15 +115,17 @@ h1 {
 <!--button id="reset" class="button" onclick="this.style.display='none'; restart()">RESET</button-->
 <span id="buttonAppear" onclick="this.style.display='none'; restart()"></span>
 <script>
-var audio = document.createElement("audio");
-audio.src = "sounds/boxing_bell.mp3";
+
+var noSleep = new NoSleep();
 //var audio1 = document.createElement("audio");
 //audio1.src = "sounds/boxing_bell1.mp3";
 //var audio2 = document.createElement("audio");
 //audio2.src = "sounds/boxing_bell2.mp3";
 
 function boxingTimer() {
-//audio.play();
+var audio = document.createElement("audio");
+audio.src = "sounds/boxing_bell.mp3";
+audio.play();
 document.getElementById("buttonAppear").innerHTML = "<button id='reset' class='button' >RESET</button>";
 
 
@@ -830,6 +833,8 @@ if (distance18 < 0) {
     document.getElementById("demo18").innerHTML = "<span style='font-size:80px'>Finished</span>";
     //document.getElementById("demo18").style.display = "none";
     //document.getElementById("round18").style.display = "none";
+
+    //https://blogs.msdn.microsoft.com/ie/2011/05/13/unlocking-the-power-of-html5-audio/
     audio.addEventListener('ended', function () {
     // Wait 500 milliseconds before next loop
     setTimeout(function () { audio.play(); }, 500);
@@ -892,6 +897,16 @@ function divDisappear() {
         c.style.display = "none";
     }
 }
+
+function enableNoSleep() {
+  noSleep.enable();
+  document.removeEventListener('click', enableNoSleep, false);
+}
+
+// Enable wake lock.
+// (must be wrapped in a user input event handler e.g. a mouse or touch handler)
+document.addEventListener('click', enableNoSleep, false);
+
     
 </script>
 
