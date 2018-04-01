@@ -23,7 +23,6 @@ h1 {
     border: none;
     color: white;
     padding: 15px 32px;
-    /*padding: 7.5px 16px;*/
     text-align: center;
     text-decoration: none;
     font-size: 16px;
@@ -45,7 +44,6 @@ h1 {
   color: red;
   font-family:'Stardos Stencil';
 }
-/*#space {font-size: 54.5px;}*/
 #round, #rest1, #round2, #rest3, #round4, #rest5, #round6, #rest7, #round8, #rest9, #round10, #rest11, #round12, #rest13, #round14, #rest15, #round16, #rest17, #round18 {
     text-align: center;
     color: yellow;
@@ -64,14 +62,13 @@ h1 {
 }
 </style>
 </head>
-<!--body onload="boxingTimer()" -->
+
 <body>
 
 <h1>Jitz Timer<br><br></h1>
 
-<!--p style="text-align:center;"> <button class="button" onclick="this.style.display='none';divDisappear(); boxingTimer()">START</button>&nbsp;&nbsp;&nbsp;<button id="reset" class="button" onclick="this.style.display='none'; restart()">RESET</button></p-->
 <button class="button" onclick="this.style.display='none';divDisappear(); boxingTimer()">START</button>
-<!--button class="button" onclick="this.style.visibility='hidden';divDisappear(); boxingTimer()">START INTERVAL TIMER</button-->
+
 <span id="buttonAppear" onclick="this.style.display='none'; restart()"></span>
 <br>
 <br>
@@ -115,9 +112,6 @@ h1 {
 <p id="rest17"></p>
 <p id="demo18"></p>
 <p id="round18"></p>
-<!--p id="space"></p-->
-<!--button id="reset" class="button" onclick="this.style.display='none'; restart()">RESET</button-->
-<!--span id="buttonAppear" onclick="this.style.display='none'; restart()"></span-->
 <script>
 
 //https://github.com/richtr/NoSleep.js?utm_source=recordnotfound.com
@@ -126,18 +120,17 @@ var noSleep = new NoSleep();
 var audio = document.createElement("audio");
 audio.src = "sounds/boxing_bell.mp3";
 audio.load();
-//var audio1 = document.createElement("audio");
-//audio1.src = "sounds/boxing_bell1.mp3";
-//var audio2 = document.createElement("audio");
-//audio2.src = "sounds/boxing_bell2.mp3";
+
 
 function boxingTimer() {
 audio.play();
 document.getElementById("buttonAppear").innerHTML = "<button id='reset' class='button' >RESET</button>";
 
+//https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_countdown
 
 // Set the date we're counting down to
-var countDownDate = (new Date().getTime() + 30000);
+//var countDownDate = new Date("Sep 5, 2018 15:37:25").getTime();
+var countDownDate = (new Date().getTime() + 300000);
 
 // Update the count down every 1 second
 var x = setInterval(function() {
@@ -160,14 +153,14 @@ var x = setInterval(function() {
     var seconds = "0" + Math.floor((distance % (1000 * 60)) / 1000);
 
    
-    // Output the result in an element with id="demo"
+    // Output the result in an element with id="demo" & "round"
     //document.getElementById("demo").innerHTML = days + "d " + hours + "h "
     //+ minutes + "m " + seconds + "s ";
     document.getElementById("demo").innerHTML = minutes + ":" + seconds;
     document.getElementById("round").innerHTML = "Round 1";
 
     
-    // If the count down is over, write some text 
+    // If the count down is over, clear timer and play bell  
     if (distance < 0) {
         clearInterval(x);
         //document.getElementById("demo").innerHTML = "Expired";
@@ -177,7 +170,7 @@ var x = setInterval(function() {
 
 
 // Set the date we're counting down to
-var countDownDate1 = (new Date().getTime() + 15000);
+var countDownDate1 = (new Date().getTime() + 60000);
 
     // Update the count down every 1 second
 var y = setInterval(function() {
@@ -197,17 +190,15 @@ if (seconds1 < 10)
     var seconds1 = "0" + Math.floor((distance1 % (1000 * 60)) / 1000);
 
 
-// Output the result in an element with id="demo"
-//document.getElementById("demo").innerHTML = days + "d " + hours + "h "
-//+ minutes + "m " + seconds + "s ";
+// Output the result in an element with id="demo" & "round"
+
 document.getElementById("demo1").innerHTML = minutes1 + ":" + seconds1;
 document.getElementById("rest1").innerHTML = "Rest";
 
-// If the count down is over, write some text 
+// If the count down is over, clear timer and play bell  
 
 if (distance1 < 0) {
     clearInterval(y);
-    //document.getElementById("demo1").innerHTML = "EXPIRED";
     document.getElementById("demo1").style.display = "none";
     document.getElementById("rest1").style.display = "none";
     audio.play();
@@ -215,7 +206,7 @@ if (distance1 < 0) {
     
 
 // Set the date we're counting down to
-var countDownDate2 = (new Date().getTime() + 30000);
+var countDownDate2 = (new Date().getTime() + 300000);
 
 // Update the count down every 1 second
 var x2 = setInterval(function() {
@@ -236,23 +227,20 @@ var x2 = setInterval(function() {
     var seconds2 = "0" + Math.floor((distance2 % (1000 * 60)) / 1000);
 
    
-    // Output the result in an element with id="demo"
-    //document.getElementById("demo").innerHTML = days + "d " + hours + "h "
-    //+ minutes + "m " + seconds + "s ";
+    // Output the result in an element with id="demo" & "round"
     document.getElementById("demo2").innerHTML = minutes2 + ":" + seconds2;
     document.getElementById("round2").innerHTML = "Round 2";
     
-    // If the count down is over, write some text 
+    // If the count down is over, clear timer and play bell  
     if (distance2 < 0) {
         clearInterval(x2);
-        //document.getElementById("demo").innerHTML = "Expired";
         document.getElementById("demo2").style.display = "none";
         document.getElementById("round2").style.display = "none";
         audio.play();
 
 
 // Set the date we're counting down to
-var countDownDate3 = (new Date().getTime() + 15000);
+var countDownDate3 = (new Date().getTime() + 60000);
 
 // Update the count down every 1 second
 var y3 = setInterval(function() {
@@ -272,13 +260,11 @@ if (seconds3 < 10)
     var seconds3 = "0" + Math.floor((distance3 % (1000 * 60)) / 1000);
 
 
-// Output the result in an element with id="demo"
-//document.getElementById("demo").innerHTML = days + "d " + hours + "h "
-//+ minutes + "m " + seconds + "s ";
+// Output the result in an element with id="demo" & "round"
 document.getElementById("demo3").innerHTML = minutes3 + ":" + seconds3;
 document.getElementById("rest3").innerHTML = "Rest";
 
-// If the count down is over, write some text 
+// If the count down is over, clear timer and play bell  
 
 if (distance3 < 0) {
     clearInterval(y3);
@@ -288,7 +274,7 @@ if (distance3 < 0) {
     
 
 // Set the date we're counting down to
-var countDownDate4 = (new Date().getTime() + 30000);
+var countDownDate4 = (new Date().getTime() + 300000);
 
 // Update the count down every 1 second
 var x4 = setInterval(function() {
@@ -309,24 +295,21 @@ var x4 = setInterval(function() {
     var seconds4 = "0" + Math.floor((distance4 % (1000 * 60)) / 1000);
 
    
-    // Output the result in an element with id="demo"
-    //document.getElementById("demo").innerHTML = days + "d " + hours + "h "
-    //+ minutes + "m " + seconds + "s ";
+    // Output the result in an element with id="demo" & "round"
     document.getElementById("demo4").innerHTML = minutes4 + ":" + seconds4;
     document.getElementById("round4").innerHTML = "Round 3";
     
     
-    // If the count down is over, write some text 
+    // If the count down is over, clear timer and play bell  
     if (distance4 < 0) {
         clearInterval(x4);
-        //document.getElementById("demo").innerHTML = "Expired";
         document.getElementById("demo4").style.display = "none";
         document.getElementById("round4").style.display = "none";
         audio.play();
 
 
 // Set the date we're counting down to
-var countDownDate5 = (new Date().getTime() + 15000);
+var countDownDate5 = (new Date().getTime() + 60000);
 
 // Update the count down every 1 second
 var y5 = setInterval(function() {
@@ -346,14 +329,12 @@ if (seconds5 < 10)
     var seconds5 = "0" + Math.floor((distance5 % (1000 * 60)) / 1000);
 
 
-// Output the result in an element with id="demo"
-//document.getElementById("demo").innerHTML = days + "d " + hours + "h "
-//+ minutes + "m " + seconds + "s ";
+// Output the result in an element with id="demo" & "round"
 document.getElementById("demo5").innerHTML = minutes5 + ":" + seconds5;
 document.getElementById("rest5").innerHTML = "Rest";
 
 
-// If the count down is over, write some text 
+// If the count down is over, clear timer and play bell  
 
 if (distance5 < 0) {
     clearInterval(y5);
@@ -362,7 +343,7 @@ if (distance5 < 0) {
     audio.play();
     
 // Set the date we're counting down to
-var countDownDate6 = (new Date().getTime() + 30000);
+var countDownDate6 = (new Date().getTime() + 300000);
 
 // Update the count down every 1 second
 var x6 = setInterval(function() {
@@ -383,24 +364,21 @@ var x6 = setInterval(function() {
     var seconds6 = "0" + Math.floor((distance6 % (1000 * 60)) / 1000);
 
    
-    // Output the result in an element with id="demo"
-    //document.getElementById("demo").innerHTML = days + "d " + hours + "h "
-    //+ minutes + "m " + seconds + "s ";
+    // Output the result in an element with id="demo" & "round"
     document.getElementById("demo6").innerHTML = minutes6 + ":" + seconds6;
     document.getElementById("round6").innerHTML = "Round 4";
     
     
-    // If the count down is over, write some text 
+    // If the count down is over, clear timer and play bell  
     if (distance6 < 0) {
         clearInterval(x6);
-        //document.getElementById("demo").innerHTML = "Expired";
         document.getElementById("demo6").style.display = "none";
         document.getElementById("round6").style.display = "none";
         audio.play();
 
 
 // Set the date we're counting down to
-var countDownDate7 = (new Date().getTime() + 15000);
+var countDownDate7 = (new Date().getTime() + 60000);
 
 // Update the count down every 1 second
 var y7 = setInterval(function() {
@@ -420,14 +398,12 @@ if (seconds7 < 10)
     var seconds7 = "0" + Math.floor((distance7 % (1000 * 60)) / 1000);
 
 
-// Output the result in an element with id="demo"
-//document.getElementById("demo").innerHTML = days + "d " + hours + "h "
-//+ minutes + "m " + seconds + "s ";
+// Output the result in an element with id="demo" & "round"
 document.getElementById("demo7").innerHTML = minutes7 + ":" + seconds7;
 document.getElementById("rest7").innerHTML = "Rest";
 
 
-// If the count down is over, write some text 
+// If the count down is over, clear timer and play bell  
 
 if (distance7 < 0) {
     clearInterval(y7);
@@ -436,7 +412,7 @@ if (distance7 < 0) {
     audio.play();
     
 // Set the date we're counting down to
-var countDownDate8 = (new Date().getTime() + 30000);
+var countDownDate8 = (new Date().getTime() + 300000);
 
 // Update the count down every 1 second
 var x8 = setInterval(function() {
@@ -457,24 +433,21 @@ var x8 = setInterval(function() {
     var seconds8 = "0" + Math.floor((distance8 % (1000 * 60)) / 1000);
 
    
-    // Output the result in an element with id="demo"
-    //document.getElementById("demo").innerHTML = days + "d " + hours + "h "
-    //+ minutes + "m " + seconds + "s ";
+    // Output the result in an element with id="demo" & "round"
     document.getElementById("demo8").innerHTML = minutes8 + ":" + seconds8;
     document.getElementById("round8").innerHTML = "Round 5";
     
     
-    // If the count down is over, write some text 
+    // If the count down is over, clear timer and play bell  
     if (distance8 < 0) {
         clearInterval(x8);
-        //document.getElementById("demo").innerHTML = "Expired";
         document.getElementById("demo8").style.display = "none";
         document.getElementById("round8").style.display = "none";
         audio.play();
 
 
 // Set the date we're counting down to
-var countDownDate9 = (new Date().getTime() + 15000);
+var countDownDate9 = (new Date().getTime() + 60000);
 
 // Update the count down every 1 second
 var y9 = setInterval(function() {
@@ -494,14 +467,12 @@ if (seconds9 < 10)
     var seconds9 = "0" + Math.floor((distance9 % (1000 * 60)) / 1000);
 
 
-// Output the result in an element with id="demo"
-//document.getElementById("demo").innerHTML = days + "d " + hours + "h "
-//+ minutes + "m " + seconds + "s ";
+// Output the result in an element with id="demo" & "round"
 document.getElementById("demo9").innerHTML = minutes9 + ":" + seconds9;
 document.getElementById("rest9").innerHTML = "Rest";
 
 
-// If the count down is over, write some text 
+// If the count down is over, clear timer and play bell  
 
 if (distance9 < 0) {
     clearInterval(y9);
@@ -510,7 +481,7 @@ if (distance9 < 0) {
     audio.play();
     
 // Set the date we're counting down to
-var countDownDate10 = (new Date().getTime() + 30000);
+var countDownDate10 = (new Date().getTime() + 300000);
 
 // Update the count down every 1 second
 var x10 = setInterval(function() {
@@ -531,24 +502,21 @@ var x10 = setInterval(function() {
     var seconds10 = "0" + Math.floor((distance10 % (1000 * 60)) / 1000);
 
    
-    // Output the result in an element with id="demo"
-    //document.getElementById("demo").innerHTML = days + "d " + hours + "h "
-    //+ minutes + "m " + seconds + "s ";
+    // Output the result in an element with id="demo" & "round"
     document.getElementById("demo10").innerHTML = minutes10 + ":" + seconds10;
     document.getElementById("round10").innerHTML = "Round 6";
     
     
-    // If the count down is over, write some text 
+    // If the count down is over, clear timer and play bell  
     if (distance10 < 0) {
         clearInterval(x10);
-        //document.getElementById("demo").innerHTML = "Expired";
         document.getElementById("demo10").style.display = "none";
         document.getElementById("round10").style.display = "none";
         audio.play();
 
 
 // Set the date we're counting down to
-var countDownDate11 = (new Date().getTime() + 15000);
+var countDownDate11 = (new Date().getTime() + 60000);
 
 // Update the count down every 1 second
 var y11 = setInterval(function() {
@@ -568,14 +536,12 @@ if (seconds11 < 10)
     var seconds11 = "0" + Math.floor((distance11 % (1000 * 60)) / 1000);
 
 
-// Output the result in an element with id="demo"
-//document.getElementById("demo").innerHTML = days + "d " + hours + "h "
-//+ minutes + "m " + seconds + "s ";
+// Output the result in an element with id="demo" & "round"
 document.getElementById("demo11").innerHTML = minutes11 + ":" + seconds11;
 document.getElementById("rest11").innerHTML = "Rest";
 
 
-// If the count down is over, write some text 
+// If the count down is over, clear timer and play bell  
 
 if (distance11 < 0) {
     clearInterval(y11);
@@ -584,7 +550,7 @@ if (distance11 < 0) {
     audio.play();
     
 // Set the date we're counting down to
-var countDownDate12 = (new Date().getTime() + 30000);
+var countDownDate12 = (new Date().getTime() + 300000);
 
 // Update the count down every 1 second
 var x12 = setInterval(function() {
@@ -605,24 +571,21 @@ var x12 = setInterval(function() {
     var seconds12 = "0" + Math.floor((distance12 % (1000 * 60)) / 1000);
 
    
-    // Output the result in an element with id="demo"
-    //document.getElementById("demo").innerHTML = days + "d " + hours + "h "
-    //+ minutes + "m " + seconds + "s ";
+    // Output the result in an element with id="demo" & "round"
     document.getElementById("demo12").innerHTML = minutes12 + ":" + seconds12;
     document.getElementById("round12").innerHTML = "Round 7";
     
     
-    // If the count down is over, write some text 
+    // If the count down is over, clear timer and play bell  
     if (distance12 < 0) {
         clearInterval(x12);
-        //document.getElementById("demo").innerHTML = "Expired";
         document.getElementById("demo12").style.display = "none";
         document.getElementById("round12").style.display = "none";
         audio.play();
 
 
 // Set the date we're counting down to
-var countDownDate13 = (new Date().getTime() + 15000);
+var countDownDate13 = (new Date().getTime() + 60000);
 
 // Update the count down every 1 second
 var y13 = setInterval(function() {
@@ -642,14 +605,12 @@ if (seconds13 < 10)
     var seconds13 = "0" + Math.floor((distance13 % (1000 * 60)) / 1000);
 
 
-// Output the result in an element with id="demo"
-//document.getElementById("demo").innerHTML = days + "d " + hours + "h "
-//+ minutes + "m " + seconds + "s ";
+// Output the result in an element with id="demo" & "round"
 document.getElementById("demo13").innerHTML = minutes13 + ":" + seconds13;
 document.getElementById("rest13").innerHTML = "Rest";
 
 
-// If the count down is over, write some text 
+// If the count down is over, clear timer and play bell  
 
 if (distance13 < 0) {
     clearInterval(y13);
@@ -658,7 +619,7 @@ if (distance13 < 0) {
     audio.play();
     
 // Set the date we're counting down to
-var countDownDate14 = (new Date().getTime() + 30000);
+var countDownDate14 = (new Date().getTime() + 300000);
 
 // Update the count down every 1 second
 var x14 = setInterval(function() {
@@ -679,24 +640,21 @@ var x14 = setInterval(function() {
     var seconds14 = "0" + Math.floor((distance14 % (1000 * 60)) / 1000);
 
    
-    // Output the result in an element with id="demo"
-    //document.getElementById("demo").innerHTML = days + "d " + hours + "h "
-    //+ minutes + "m " + seconds + "s ";
+    // Output the result in an element with id="demo" & "round"
     document.getElementById("demo14").innerHTML = minutes14 + ":" + seconds14;
     document.getElementById("round14").innerHTML = "Round 8";
     
     
-    // If the count down is over, write some text 
+    // If the count down is over, clear timer and play bell  
     if (distance14 < 0) {
         clearInterval(x14);
-        //document.getElementById("demo").innerHTML = "Expired";
         document.getElementById("demo14").style.display = "none";
         document.getElementById("round14").style.display = "none";
         audio.play();
 
 
 // Set the date we're counting down to
-var countDownDate15 = (new Date().getTime() + 15000);
+var countDownDate15 = (new Date().getTime() + 60000);
 
 // Update the count down every 1 second
 var y15 = setInterval(function() {
@@ -716,14 +674,12 @@ if (seconds15 < 10)
     var seconds15 = "0" + Math.floor((distance15 % (1000 * 60)) / 1000);
 
 
-// Output the result in an element with id="demo"
-//document.getElementById("demo").innerHTML = days + "d " + hours + "h "
-//+ minutes + "m " + seconds + "s ";
+// Output the result in an element with id="demo" & "round"
 document.getElementById("demo15").innerHTML = minutes15 + ":" + seconds15;
 document.getElementById("rest15").innerHTML = "Rest";
 
 
-// If the count down is over, write some text 
+// If the count down is over, clear timer and play bell  
 
 if (distance15 < 0) {
     clearInterval(y15);
@@ -732,7 +688,7 @@ if (distance15 < 0) {
     audio.play();
     
 // Set the date we're counting down to
-var countDownDate16 = (new Date().getTime() + 30000);
+var countDownDate16 = (new Date().getTime() + 300000);
 
 // Update the count down every 1 second
 var x16 = setInterval(function() {
@@ -753,24 +709,21 @@ var x16 = setInterval(function() {
     var seconds16 = "0" + Math.floor((distance16 % (1000 * 60)) / 1000);
 
    
-    // Output the result in an element with id="demo"
-    //document.getElementById("demo").innerHTML = days + "d " + hours + "h "
-    //+ minutes + "m " + seconds + "s ";
+    // Output the result in an element with id="demo" & "round"
     document.getElementById("demo16").innerHTML = minutes16 + ":" + seconds16;
     document.getElementById("round16").innerHTML = "Round 9";
     
     
-    // If the count down is over, write some text 
+    // If the count down is over, clear timer and play bell 
     if (distance16 < 0) {
         clearInterval(x16);
-        //document.getElementById("demo").innerHTML = "Expired";
         document.getElementById("demo16").style.display = "none";
         document.getElementById("round16").style.display = "none";
         audio.play();
 
 
 // Set the date we're counting down to
-var countDownDate17 = (new Date().getTime() + 15000);
+var countDownDate17 = (new Date().getTime() + 60000);
 
 // Update the count down every 1 second
 var y17 = setInterval(function() {
@@ -790,14 +743,12 @@ if (seconds17 < 10)
     var seconds17 = "0" + Math.floor((distance17 % (1000 * 60)) / 1000);
 
 
-// Output the result in an element with id="demo"
-//document.getElementById("demo").innerHTML = days + "d " + hours + "h "
-//+ minutes + "m " + seconds + "s ";
+// Output the result in an element with id="demo" & "round"
 document.getElementById("demo17").innerHTML = minutes17 + ":" + seconds17;
 document.getElementById("rest17").innerHTML = "Rest";
 
 
-// If the count down is over, write some text 
+// If the count down is over, clear timer and play bell 
 
 if (distance17 < 0) {
     clearInterval(y17);
@@ -806,7 +757,7 @@ if (distance17 < 0) {
     audio.play();
     
 // Set the date we're counting down to
-var countDownDate18 = (new Date().getTime() + 30000);
+var countDownDate18 = (new Date().getTime() + 300000);
 
 // Update the count down every 1 second
 var x18 = setInterval(function() {
@@ -826,24 +777,19 @@ if (seconds18 < 10)
     var seconds18 = "0" + Math.floor((distance18 % (1000 * 60)) / 1000);
 
 
-// Output the result in an element with id="demo"
-//document.getElementById("demo").innerHTML = days + "d " + hours + "h "
-//+ minutes + "m " + seconds + "s ";
+// Output the result in an element with id="demo" & "round"
 document.getElementById("demo18").innerHTML = minutes18 + ":" + seconds18;
 document.getElementById("round18").innerHTML = "Round 10";
-//document.getElementById("space").innerHTML = ".";
 
-// If the count down is over, write some text 
+// If the count down is over, write some text and play finishing bell
 
 if (distance18 < 0) {
     clearInterval(x18);
     document.getElementById("demo18").innerHTML = "<span style='font-size:80px'>Finished</span>";
-    //document.getElementById("demo18").style.display = "none";
-    //document.getElementById("round18").style.display = "none";
 
     //https://blogs.msdn.microsoft.com/ie/2011/05/13/unlocking-the-power-of-html5-audio/
     audio.addEventListener('ended', function () {
-    // Wait 500 milliseconds before next loop
+    // Wait 0 milliseconds before next loop
     setTimeout(function () { audio.play(); }, 0);
     }, false);
     audio.play();
@@ -923,8 +869,10 @@ if (distance19 < 0) {
     }, 0);
 }
 
+//Restart web app
 function restart() {location.reload();}
 
+//Div disappear
 function divDisappear() {
     var c = document.getElementById("disappear");
     if (c.style.display === "none") {
